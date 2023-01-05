@@ -1,0 +1,29 @@
+.navBar {
+    background-color: black;
+    max-width: 1440px;
+    height: 5rem;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 30px;
+    align-items: center;
+
+    &-logo {
+        width: 10%;
+    }
+
+    &-navigation {
+        color: #FFFFFF;
+        width: 90%;
+        
+        &-list {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            &-elt {
+                width: 10%;
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+    }
+}
