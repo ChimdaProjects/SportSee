@@ -1,0 +1,26 @@
+.navBarLeft {
+    background-color: black;
+    width: 6.7rem;
+    display: flex;
+    flex-direction: column;
+    color: white;  
+    height: 933px;
+    justify-content: flex-end;
+    
+    
+    &-footer {
+        display: flex;
+        align-items: center;
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+        padding-top:50px;
+        padding-bottom: 164px;
+        font-size: 12px;
+        
+    }
+}
+
+.icon {
+    margin: 0.5rem;
+}
+
