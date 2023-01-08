@@ -1,0 +1,25 @@
+.graph-activity {
+    width: 70%;
+    padding-left: 43px;
+    background-color: #FBFBFB;
+    border-radius: 5px;
+    
+    &-title {
+        font-size: 15px;
+        text-align: left;
+        position: relative;
+        top:3rem;
+        margin-left:0.3rem
+    }
+}
+
+
+
+/* tooltip custom */
+.tooltip {
+    background-color: #E60000 ;
+    color: #FFF;
+    padding: 0.5rem;
+    font-size: 12px;
+    
+}
