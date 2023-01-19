@@ -1,31 +1,31 @@
 import "./radarChartActivity.scss";
 
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 
 
 const data = [
     {
-        kind: "cardio",
+        kind: "Cardio",
         value: 80
     },
     {
-        kind: "energy",
+        kind: "Energy",
         value: 120
     },
     {
-        kind: "endurance",
+        kind: "Endurance",
         value: 140
     },
     {
-        kind: "strength",
+        kind: "Strength",
         value: 50
     },
     {
-        kind: "speed",
+        kind: "Speed",
         value: 200
     },
     {
-        kind: "intensity",
+        kind: "Intensity",
         value: 90
     }
 
@@ -34,12 +34,25 @@ const RadarChartActivity = () => {
    
     return (
         <div className="graph-radar-activity">
-            <ResponsiveContainer width={"100%"} height={258}>
-                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+            <ResponsiveContainer width={"100%"} height={250}>
+                <RadarChart 
+                    cx="50%" 
+                    cy="50%" 
+                    outerRadius="80%" 
+                    data={data}
+   
+                >   
                     <PolarGrid />
-                    <PolarAngleAxis dataKey="kind" />
-                    <PolarRadiusAxis />
-                    <Radar  dataKey="value" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                    <PolarAngleAxis 
+                        dataKey="kind" 
+                        tick={{fontSize: 12, color: "#FFFFFF"}} 
+
+                    />
+                    <Radar  
+                        dataKey="value"  
+                        fill="#FF0101B2" 
+                        fillOpacity={0.7} 
+                    />
                 </RadarChart>
       </ResponsiveContainer>
         </div>

@@ -1,0 +1,31 @@
+.graph-score {
+    position: relative;
+    height: 263px;
+    width: 258px;
+    background: #FBFBFB;
+    border-radius: 5px
+    ;
+    &-title {
+        font-size: 15px;
+        color:#20253A;
+        margin:1rem 0 0 0.5rem;
+        text-align: left;
+    }
+}
+.score {
+    width: 100%;
+    position: absolute;
+    margin:0 auto;
+    top:30%;
+    
+    &-percent {
+        font-size: 26px;
+        color:#282D30;
+        font-weight: bold;
+        margin-bottom: 0;
+     
+    }
+    &-text {
+        color:#74798C;
+    }
+}
