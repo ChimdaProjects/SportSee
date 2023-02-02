@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-
+import axios from "axios";
 // router
 import { useParams } from "react-router-dom";
 
@@ -24,27 +24,35 @@ import lip_icon from "../asset/fat-icon.svg"
 
 // style
 import "./dashboard.scss"
+import { USER_MAIN_DATA } from "../datas/data";
 
-import {USER_MAIN_DATA} from "../datas/data"
+
 const Dashboard = () => {
     
-    const [ data, setData ] = useState([]);
+    const [ dataUser, setDataUser ] = useState([]);
+    const [ dataKey, setDataKey ] = useState([]);
+    const [score, setScore] = useState([]);
+    //console.log("data", dataUser);
+
     const { userId } = useParams();
+    //console.log("user id", userId);
 
     useEffect(() => {
-        const fetchDatas =  async () => {
-            const datas =  await getUserInfos(userId);
-            setData(datas);
+        const fetchDatas = async () => {
+            const datas = await getUserInfos(userId);
+            console.log("datas",datas)
+            setDataUser(datas.userInfos);
+            setDataKey(datas.keyData);
+            setScore(datas.todayScore || datas.score);
         }
-        
         fetchDatas();
-        
     } , [userId]);
 
-    console.log("datas reçues", data);
-    const {userInfos, keyData} = data;
-    //console.log(userInfos)
-    if (data.length === 0) { console.log("data 0"); return null};
+   
+    const {userInfos, keyData} = dataUser
+    
+    //console.log("username",userInfos.firstName)
+    if (!dataUser) return null;
     
     return (      
             <div className="dashboard">
@@ -53,8 +61,9 @@ const Dashboard = () => {
                 <NavBarLeft />
               
                 <div className="dashboard-main-user">
-                   <User name = {userInfos.firstName}/>
-                   
+                    
+                   <User name ={dataUser.firstName}/>
+                   {/* dataUser.userInfos.firstName */}
                 
                     <div className="dashboard-main-content">
                         <div className="dashboard-main-content-graph">
@@ -62,33 +71,33 @@ const Dashboard = () => {
                             <div className="dashboard-main-content-graph-details">
                                 <LineChartSession />
                                 <RadarChartActivity />
-                                <RadialBarChartScore />
+                                <RadialBarChartScore score = {score}/>
                             </div>   
                         </div>
 
                         <div className="dashboard-main-content-cards">
                             <Card 
                                 icon = {cal_icon} 
-                                num = ""
+                                num = {dataKey.calorieCount}
                                 unit = "kcal"
                                 cat="Calories"
                             />
                             <Card 
                                 icon = {prot_icon}
-                                num = ""
+                                num = {dataKey.proteinCount}
                                 unit = "g"
                                 cat="Proteines"
                             />
                             <Card 
                                 icon = {gluc_icon}
-                                num = ""
+                                num = {dataKey.carbohydrateCount }
                                 unit = "g"
                                 cat="Glucides"
                             />
                             <Card 
                                 icon = {lip_icon}
-                                num = ""
-                                unit = ""
+                                num = {dataKey.lipidCount}
+                                unit = "g"
                                 cat="Lipides"
                             />
                         </div>

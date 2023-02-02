@@ -1,9 +1,10 @@
 import "./radialBarScore.scss"
 import { ResponsiveContainer, PieChart, Pie, Legend, Cell} from 'recharts';
 
-const RadialBarChartScore = () => {
+const RadialBarChartScore = ({score}) => {
     const data = [
-        { value: 12 }
+        { value: score },
+        { value: 1 - score },
     ]
     return (
         <div className="graph-score">
@@ -17,13 +18,21 @@ const RadialBarChartScore = () => {
                         outerRadius={85}
                         startAngle={90}
                     >
-                        
-                        <Cell cornerRadius={8} fill="#ff0000" />
+                    {
+                    data.map((entry, index) => index === 0 ? 
+                    (
+                    <Cell key={`cell-${index}`} cornerRadius={10} fill="#ff0000" />
+                    ) : 
+                    (
+                    <Cell key={`cell-${entry}`} fill="#FBFBFB" />
+                    )
+            )}
+                        {/*<Cell cornerRadius={8} fill="#ff0000" />*/}
                     </Pie>
                 </PieChart>
             </ResponsiveContainer>
             <div className="score">
-                <p className="score-percent">12%</p>
+                <p className="score-percent">{score * 100}%</p>
                 <p className="score-text">de votre</p>
                 <p className="score-text">objectif</p>
             </div>

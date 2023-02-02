@@ -5,10 +5,11 @@ import {Routes, Route} from "react-router-dom"
 import Home from '../../pages/Home';
 import React, {useState, useEffect} from "react";
 // router
-//import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // datas
-//import {getUserInfos } from "../../services/callsDatasMocked";
+import {getUserInfos } from "../../services/callsDatasMocked";
+import { USER_MAIN_DATA } from '../../datas/data';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
                 <Route path="/" element={<Home/>} />
                 <Route
                     path="/user/:userId" 
-                    element = { <Dashboard /> } />
+                    element = { <Dashboard  /> } />
                     
                  
       
