@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from "react";
 
 // router
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-// datas
-import { getUserInfos, getDatas } from "../services/callsDatasMocked";
 
 // components
 import ActivityGraph from "../components/ActivityGraph/ActivityGraph";
@@ -25,37 +23,21 @@ import lip_icon from "../asset/fat-icon.svg"
 // style
 import "./dashboard.scss"
 
-import {USER_MAIN_DATA} from "../datas/data"
-const Dashboard = () => {
-    
-    const [ data, setData ] = useState([]);
-    const { userId } = useParams();
 
-    useEffect(() => {
-        const fetchDatas =  async () => {
-            const datas =  await getUserInfos(userId);
-            setData(datas);
-        }
-        
-        fetchDatas();
-        
-    } , [userId]);
 
-    console.log("datas reçues", data);
-    const {userInfos, keyData} = data;
-    //console.log(userInfos)
-    if (data.length === 0) { console.log("data 0"); return null};
-    
-    return (      
-            <div className="dashboard">
+
+const Home = () => {
+
+    return (
+        <div className="dashboard">
             <NavBar />
             <div className="dashboard-main">
                 <NavBarLeft />
-              
                 <div className="dashboard-main-user">
-                   <User name = {userInfos.firstName}/>
-                   
-                
+                    
+                    <User />
+                    <Link to="/user/12">User 12 &#x1F6B9; </Link>
+                    <Link to="/user/18">User 18 &#x1F6BA;</Link>
                     <div className="dashboard-main-content">
                         <div className="dashboard-main-content-graph">
                             <ActivityGraph />
@@ -88,7 +70,7 @@ const Dashboard = () => {
                             <Card 
                                 icon = {lip_icon}
                                 num = ""
-                                unit = ""
+                                unit = "g"
                                 cat="Lipides"
                             />
                         </div>
@@ -100,12 +82,7 @@ const Dashboard = () => {
             </div>
             
         </div>
-
-     ) 
-
-    
-    
-    
+    )
 }
 
-export default Dashboard;
+export default Home;

@@ -5,7 +5,7 @@ import CustomToolTipSession from "./CustomToolTipSession";
 
 const LineChartSession = () => {
     const data = dataSession.USER_AVERAGE_SESSIONS[0].sessions;
-    console.log("data", data)
+    //console.log("data", data)
     return (
         <div className="graph-session">
             <ResponsiveContainer width={"100%"} height={258}>
