@@ -3,16 +3,58 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 import dataSession from "../../datas/data"
 import CustomToolTipSession from "./CustomToolTipSession";
 
-const LineChartSession = () => {
-    const data = dataSession.USER_AVERAGE_SESSIONS[0].sessions;
-    //console.log("data", data)
+const LineChartSession = ({data}) => {
+    //console.log(data)
+    const newDatas = data.map((elt) => {
+        //console.log("elt",elt)
+        switch(elt.day) {
+            case 1: 
+            return { 
+                day: "L",
+                sessionLength : elt.sessionLength
+                
+            }
+            case 2: 
+            return {
+                day: "M",  
+                sessionLength : elt.sessionLength
+            }
+            case 3: 
+            return { 
+                day: "M", 
+                sessionLength : elt.sessionLength 
+            }
+            case 4: 
+            return {
+                day: "J",  
+                sessionLength : elt.sessionLength
+            }
+            case 5: 
+            return { 
+                day: "V", 
+                sessionLength : elt.sessionLength 
+            }
+            case 6: 
+            return { 
+                day: "S",  
+                sessionLength : elt.sessionLength
+            }
+            case 7: 
+            return {
+                day: "D", 
+                sessionLength : elt.sessionLength 
+            }
+            default : return {...data}
+        }
+    })
+    //console.log("data", newDatas)
     return (
         <div className="graph-session">
             <ResponsiveContainer width={"100%"} height={258}>
                 <LineChart
                       width={500}
                       height={300}
-                      data={data}
+                      data={newDatas}
                       strokeWidth={1}
                 >
                         <XAxis 

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 // datas
-import { getUserInfos, getDatas, getUserActivity } from "../services/callsDatasMocked";
+import { getUserInfos, getDatas, getUserActivity, getUserAverageSessions } from "../services/callsDatasMocked";
 
 // components
 import ActivityGraph from "../components/ActivityGraph/ActivityGraph";
@@ -33,6 +33,7 @@ const Dashboard = () => {
     const [ dataKey, setDataKey ] = useState([]);
     const [score, setScore] = useState([]);
     const [session, setSession] = useState([]);
+    const [averageSession, setAverageSession] = useState([]);
     //console.log("data", dataUser);
 
     const { userId } = useParams();
@@ -49,7 +50,8 @@ const Dashboard = () => {
             const dataActivity = await getUserActivity(userId);
             setSession(dataActivity.sessions);
             
-           
+           const dataAverageSession = await getUserAverageSessions(userId);
+           setAverageSession(dataAverageSession.sessions);
             
         }
         fetchDatas();
@@ -74,7 +76,7 @@ const Dashboard = () => {
                         <div className="dashboard-main-content-graph">
                             <ActivityGraph data = {session}/>
                             <div className="dashboard-main-content-graph-details">
-                                <LineChartSession />
+                                <LineChartSession data = {averageSession}/>
                                 <RadarChartActivity />
                                 <RadialBarChartScore score = {score}/>
                             </div>   

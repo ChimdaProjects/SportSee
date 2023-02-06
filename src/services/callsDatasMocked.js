@@ -42,7 +42,7 @@ export const getUserActivity = async (id) => {
                         .filter(user => user.userId == id)
                         .shift();
 
-        console.log("data activity", dataActivity);
+        //console.log("data activity", dataActivity);
         return dataActivity;
         
     }
@@ -57,9 +57,10 @@ export const getUserActivity = async (id) => {
  * @param {*} id 
  * @returns 
  */
-export const getUserAverageSessions = (id) => {
+export const getUserAverageSessions = async (id) => {
     try {
-        const infos = USER_AVERAGE_SESSIONS.find((user) => user.id == id);
+        const infos = USER_AVERAGE_SESSIONS.find((user) => user.userId == id);
+        console.log("data average", infos);
         return infos;
 
     }
