@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 // datas
-import { getUserInfos, getDatas, getUserActivity, getUserAverageSessions } from "../services/callsDatasMocked";
+import { getUserInfos, getUserActivity, getUserAverageSessions, getUserPerf } from "../services/callsDatasMocked";
 
 // components
 import ActivityGraph from "../components/ActivityGraph/ActivityGraph";
@@ -23,8 +23,7 @@ import gluc_icon from "../asset/carbs-icon.svg"
 import lip_icon from "../asset/fat-icon.svg"
 
 // style
-import "./dashboard.scss"
-import { USER_MAIN_DATA } from "../datas/data";
+import "./dashboard.scss";
 
 
 const Dashboard = () => {
@@ -34,6 +33,7 @@ const Dashboard = () => {
     const [score, setScore] = useState([]);
     const [session, setSession] = useState([]);
     const [averageSession, setAverageSession] = useState([]);
+    const [perf, setPerf] = useState([]);
     //console.log("data", dataUser);
 
     const { userId } = useParams();
@@ -53,12 +53,14 @@ const Dashboard = () => {
            const dataAverageSession = await getUserAverageSessions(userId);
            setAverageSession(dataAverageSession.sessions);
             
+           const dataPerformance = await getUserPerf(userId);
+           setPerf(dataPerformance.data);
         }
         fetchDatas();
     } , [userId]);
     
     //console.log("username",userInfos.firstName)
-    console.log("session", session)
+    console.log("perf", perf)
     if (!dataUser) return null;
     
     return (      
@@ -77,7 +79,7 @@ const Dashboard = () => {
                             <ActivityGraph data = {session}/>
                             <div className="dashboard-main-content-graph-details">
                                 <LineChartSession data = {averageSession}/>
-                                <RadarChartActivity />
+                                <RadarChartActivity dataPerf ={perf}/>
                                 <RadialBarChartScore score = {score}/>
                             </div>   
                         </div>

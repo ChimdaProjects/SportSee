@@ -74,9 +74,9 @@ export const getUserAverageSessions = async (id) => {
  * @param {*} id 
  * @returns 
  */
-export const getUserPerf = (id) => {
+export const getUserPerf = async (id) => {
     try {
-        const infos = USER_PERFORMANCE.find((user) => user.id == id);
+        const infos = USER_PERFORMANCE.find((user) => user.userId == id);
         return infos;
     }
     catch(err) {

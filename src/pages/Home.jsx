@@ -38,42 +38,7 @@ const Home = () => {
                     <User />
                     <Link to="/user/12">User 12 &#x1F6B9; </Link>
                     <Link to="/user/18">User 18 &#x1F6BA;</Link>
-                    <div className="dashboard-main-content">
-                        <div className="dashboard-main-content-graph">
-                            <ActivityGraph />
-                            <div className="dashboard-main-content-graph-details">
-                                <LineChartSession />
-                                <RadarChartActivity />
-                                <RadialBarChartScore />
-                            </div>   
-                        </div>
-
-                        <div className="dashboard-main-content-cards">
-                            <Card 
-                                icon = {cal_icon} 
-                                num = ""
-                                unit = "kcal"
-                                cat="Calories"
-                            />
-                            <Card 
-                                icon = {prot_icon}
-                                num = ""
-                                unit = "g"
-                                cat="Proteines"
-                            />
-                            <Card 
-                                icon = {gluc_icon}
-                                num = ""
-                                unit = "g"
-                                cat="Glucides"
-                            />
-                            <Card 
-                                icon = {lip_icon}
-                                num = ""
-                                unit = "g"
-                                cat="Lipides"
-                            />
-                        </div>
+                  
                     </div>
                     
                     
@@ -81,7 +46,7 @@ const Home = () => {
                 
             </div>
             
-        </div>
+     
     )
 }
 

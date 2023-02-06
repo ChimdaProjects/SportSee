@@ -3,35 +3,44 @@ import "./radarChartActivity.scss";
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 
 
-const data = [
-    {
-        kind: "Cardio",
-        value: 80
-    },
-    {
-        kind: "Energy",
-        value: 120
-    },
-    {
-        kind: "Endurance",
-        value: 140
-    },
-    {
-        kind: "Strength",
-        value: 50
-    },
-    {
-        kind: "Speed",
-        value: 200
-    },
-    {
-        kind: "Intensity",
-        value: 90
-    }
-
-]
-const RadarChartActivity = () => {
-   
+const RadarChartActivity = ({dataPerf}) => {
+ 
+    const newDatas = dataPerf.map((elt)=> {
+        switch(elt.kind) {
+            case 1: 
+            return {
+                kind: "cardio",
+                value: elt.value
+            }
+            case 2: 
+            return {
+                kind: "energy",
+                value: elt.value
+            }
+            case 3: 
+            return {
+                kind: "endurance",
+                value: elt.value
+            }
+            case 4: 
+            return {
+                kind: "strength",
+                value: elt.value
+            }
+            case 5: 
+            return {
+                kind: "speed",
+                value: elt.value
+            }
+            case 6: 
+            return {
+                kind: "intensity",
+                value: elt.value
+            }
+            default: return {...dataPerf}
+        }
+   })
+   //console.log("newdatas", newDatas);
     return (
         <div className="graph-radar-activity">
             <ResponsiveContainer width={"100%"} height={250}>
@@ -39,7 +48,7 @@ const RadarChartActivity = () => {
                     cx="50%" 
                     cy="50%" 
                     outerRadius="80%" 
-                    data={data}
+                    data={newDatas}
    
                 >   
                     <PolarGrid />
