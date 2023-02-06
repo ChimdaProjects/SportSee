@@ -1,4 +1,7 @@
 import "./activityGraph.scss";
+import React, {useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
+import { getUserActivity } from "../../services/callsDatasMocked";
 import {
     BarChart,
     Bar,
@@ -11,20 +14,21 @@ import {
     Label
   } from "recharts";
 
-import dataActivity from "../../datas/data"
-
-const ActivityGraph = () => {
-    const activity = dataActivity.USER_ACTIVITY[0].sessions;
-
-    //console.log("activity", activity);
-
+const ActivityGraph = ({data}) => {
+  // array of sessions
+   const datas = data;
+   // loop to transform date by number
+   for (let i = 0 ; i < datas.length ; i ++) {
+        datas[i].day = i + 1 ;
+    }
+  
     return (
         <div className="graph-activity">
             <h2 className="graph-activity-title">Activité quotidienne</h2>
             <BarChart
                 width={800}
                 height={300}
-                data={activity}
+                data={data}
              
                 barGap={8} barCategoryGap={1}
             >
@@ -32,9 +36,9 @@ const ActivityGraph = () => {
             <Label>
                 Activité quotidienne
             </Label>
-            <XAxis dataKey="day" /> 
-            <YAxis  dataKey="kilogram" type="number" domain={['dataMin-1', 'dataMax + 1']}  axisLine={false} orientation="right" tickLine={false} tick={{fontSize: 14}} />
-            <YAxis  dataKey="calories" type="number"  domain={[0, "dataMax + 50"]}
+            <XAxis dataKey="day" dy={15}/> 
+            <YAxis  dataKey="kilogram" type="number" domain={['dataMin-1', 'dataMax + 1']}  axisLine={false} orientation="right" tickLine={false} tick={{fontSize: 14}} dx={15}  />
+            <YAxis  dataKey="calories" type="number"  domain={['dataMin-20', "dataMax + 10"]}
             hide={true}  />
             <Tooltip content={<CustomToolTip/>}/>
             <Legend  verticalAlign="top" wrapperStyle={{ lineHeight: "40px"}} align="right" />

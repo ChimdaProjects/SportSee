@@ -20,7 +20,7 @@ export const getUserInfos =  async (id) => {
                 .filter(user => user.id == id)
                 .shift();
 
-            console.log("data user", infos);
+            //console.log("data user", infos);
            return infos;
            
         } 
@@ -37,13 +37,20 @@ export const getUserInfos =  async (id) => {
  */
 export const getUserActivity = async (id) => {
     try {
-        const res =  USER_ACTIVITY.find((user) => user.id == id);
-        return res;
+        const dataActivity =  
+                    USER_ACTIVITY
+                        .filter(user => user.userId == id)
+                        .shift();
+
+        console.log("data activity", dataActivity);
+        return dataActivity;
+        
     }
     catch(err) {
         console.log(err);
     }
 }
+
 
 /**
  * Get session of user
@@ -52,8 +59,8 @@ export const getUserActivity = async (id) => {
  */
 export const getUserAverageSessions = (id) => {
     try {
-        const res = USER_AVERAGE_SESSIONS.find((user) => user.id == id);
-        return {datas : res};
+        const infos = USER_AVERAGE_SESSIONS.find((user) => user.id == id);
+        return infos;
 
     }
     catch (err)  {
@@ -68,8 +75,8 @@ export const getUserAverageSessions = (id) => {
  */
 export const getUserPerf = (id) => {
     try {
-        const res = USER_PERFORMANCE.find((user) => user.id == id);
-        return res;
+        const infos = USER_PERFORMANCE.find((user) => user.id == id);
+        return infos;
     }
     catch(err) {
         console.log(err)

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 // datas
-import { getUserInfos, getDatas } from "../services/callsDatasMocked";
+import { getUserInfos, getDatas, getUserActivity } from "../services/callsDatasMocked";
 
 // components
 import ActivityGraph from "../components/ActivityGraph/ActivityGraph";
@@ -32,6 +32,7 @@ const Dashboard = () => {
     const [ dataUser, setDataUser ] = useState([]);
     const [ dataKey, setDataKey ] = useState([]);
     const [score, setScore] = useState([]);
+    const [session, setSession] = useState([]);
     //console.log("data", dataUser);
 
     const { userId } = useParams();
@@ -40,18 +41,22 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchDatas = async () => {
             const datas = await getUserInfos(userId);
-            console.log("datas",datas)
+            //console.log("datas",datas)
             setDataUser(datas.userInfos);
             setDataKey(datas.keyData);
             setScore(datas.todayScore || datas.score);
+            
+            const dataActivity = await getUserActivity(userId);
+            setSession(dataActivity.sessions);
+            
+           
+            
         }
         fetchDatas();
     } , [userId]);
-
-   
-    const {userInfos, keyData} = dataUser
     
     //console.log("username",userInfos.firstName)
+    console.log("session", session)
     if (!dataUser) return null;
     
     return (      
@@ -67,7 +72,7 @@ const Dashboard = () => {
                 
                     <div className="dashboard-main-content">
                         <div className="dashboard-main-content-graph">
-                            <ActivityGraph />
+                            <ActivityGraph data = {session}/>
                             <div className="dashboard-main-content-graph-details">
                                 <LineChartSession />
                                 <RadarChartActivity />

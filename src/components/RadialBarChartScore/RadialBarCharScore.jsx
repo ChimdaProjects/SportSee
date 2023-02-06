@@ -26,8 +26,8 @@ const RadialBarChartScore = ({score}) => {
                     (
                     <Cell key={`cell-${entry}`} fill="#FBFBFB" />
                     )
-            )}
-                        {/*<Cell cornerRadius={8} fill="#ff0000" />*/}
+                    )}
+        
                     </Pie>
                 </PieChart>
             </ResponsiveContainer>

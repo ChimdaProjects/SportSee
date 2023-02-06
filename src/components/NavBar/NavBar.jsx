@@ -1,12 +1,16 @@
 
 import "./navBar.scss";
-import logo from "../../asset/logo_home.svg"
+import logo from "../../asset/logo_home.svg";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
     return (
         <div className="navBar">
             <div className="navBar-logo">
-                <img src={logo} alt="logo of SportSee" />
+                <Link to="/">
+                    <img src={logo} alt="logo of SportSee" />
+                </Link>
+               
             </div>
             <nav className="navBar-navigation">
                 <ul className="navBar-navigation-list">
