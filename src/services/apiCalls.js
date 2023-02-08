@@ -29,3 +29,18 @@ export async function getUserActivity(id) {
       console.error(error);
     }
 }
+
+/**
+ * @description retrieves the average sessions of a user per day. The week starts on Monday.
+ * @param {number} id 
+ * @returns 
+ */
+export async function getUserAverageSessions(id) {
+    try {
+        const response = await axios.get(`http://localhost:3000/user/${id}/average-sessions`);
+        console.log(response);
+        return response.data;
+      } catch (error) {
+        console.error(error);
+      }
+}
