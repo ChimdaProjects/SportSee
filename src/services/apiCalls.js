@@ -13,5 +13,19 @@ export async function getUserInfos(id) {
     } catch (error) {
       console.error(error);
     }
-  }
+}
 
+/**
+ * @description retrieves a user's activity day by day with kilograms and calories.
+ * @param {number} id 
+ * @returns 
+ */
+export async function getUserActivity(id) {
+    try {
+      const response = await axios.get(`http://localhost:3000/user/${id}/activity`);
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+}
