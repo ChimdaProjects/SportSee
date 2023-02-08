@@ -5,6 +5,7 @@ This repo contains all the source code for the sports analytics dashboard SportS
 ## Prerequisites
 - NodeJS
 - Yarn
+- Npm
 
 ## Launching the project
 
