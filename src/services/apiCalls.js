@@ -44,3 +44,18 @@ export async function getUserAverageSessions(id) {
         console.error(error);
       }
 }
+
+/**
+ * @description retrieves a user's performance (energy, endurance, etc.).
+ * @param {number} id 
+ * @returns 
+ */
+export async function getUserPerf(id) {
+    try {
+        const response = await axios.get(`http://localhost:3000/user/${id}/performance`);
+        console.log(response);
+        return response.data;
+      } catch (error) {
+        console.error(error);
+      }
+}
