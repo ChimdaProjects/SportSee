@@ -23,6 +23,6 @@ This repo contains all the source code for the sports analytics dashboard SportS
 
 ## Endpoints
 We have 2 users: 
-- http://localhost:3000/user/12
-- http://localhost:3000/user/18
+- http://localhost:3001/user/12
+- http://localhost:3001/user/18
 
