@@ -4,8 +4,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 // datas
-import { getUserInfos, getUserActivity, getUserAverageSessions, getUserPerf } from "../services/callsDatasMocked";
-
+import {  getUserActivity, getUserAverageSessions, getUserPerf } from "../services/callsDatasMocked";
+import { getUserInfos } from "../services/apiCalls";
 // components
 import ActivityGraph from "../components/ActivityGraph/ActivityGraph";
 import Card from "../components/Card/Card";
@@ -41,11 +41,11 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchDatas = async () => {
-            const datas = await getUserInfos(userId);
-            //console.log("datas",datas)
-            setDataUser(datas.userInfos);
-            setDataKey(datas.keyData);
-            setScore(datas.todayScore || datas.score);
+            const datas = await getUserInfos(parseInt(userId));
+            console.log("datas",datas)
+            setDataUser(datas.data.userInfos);
+            setDataKey(datas.data.keyData);
+            setScore(datas.data.todayScore || datas.score);
             
             const dataActivity = await getUserActivity(userId);
             setSession(dataActivity.sessions);
@@ -60,7 +60,7 @@ const Dashboard = () => {
     } , [userId]);
     
     //console.log("username",userInfos.firstName)
-    console.log("perf", perf)
+    //console.log("perf", perf)
     if (!dataUser) return null;
     
     return (      

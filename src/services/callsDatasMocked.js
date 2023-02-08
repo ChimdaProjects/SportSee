@@ -1,7 +1,5 @@
 // import data
 
-
-import User from "../components/User/User";
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from "../datas/data";
 
 
@@ -11,8 +9,7 @@ import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE 
  * @returns {object} response data
  */
 
-
-export const getUserInfos =  async (id) => {
+/*export const getUserInfos =  async (id) => {
     
     try { 
             const infos = 
@@ -28,12 +25,12 @@ export const getUserInfos =  async (id) => {
     catch(err) {
         console.log(err);
     }
-}
+}*/
 
 /**
  * Get user activity
  * @param {number} id 
- * @returns 
+ * @returns {object} response data
  */
 export const getUserActivity = async (id) => {
     try {
@@ -54,8 +51,8 @@ export const getUserActivity = async (id) => {
 
 /**
  * Get session of user
- * @param {*} id 
- * @returns 
+ * @param {number} id 
+ * @returns {object} response data
  */
 export const getUserAverageSessions = async (id) => {
     try {
@@ -71,8 +68,8 @@ export const getUserAverageSessions = async (id) => {
 
 /**
  * Get performance of user
- * @param {*} id 
- * @returns 
+ * @param {number} id of user
+ * @returns {object} response data
  */
 export const getUserPerf = async (id) => {
     try {
