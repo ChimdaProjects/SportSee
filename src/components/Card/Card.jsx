@@ -1,4 +1,5 @@
 import "./card.scss";
+import PropTypes from 'prop-types';
 
 const Card = ( {icon, num, unit, cat}) => {
     return (
@@ -15,4 +16,10 @@ const Card = ( {icon, num, unit, cat}) => {
     )
 }
 
+Card.prototype = {
+    icon: PropTypes.string.isRequired,
+    num: PropTypes.string.isRequired,
+    unit: PropTypes.string.isRequired,
+    cat : PropTypes.string.isRequired
+}
 export default Card;

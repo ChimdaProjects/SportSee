@@ -1,16 +1,12 @@
-import Dashboard from '../../pages/Dashboard';
-import './App.css';
-
+// Router
 import {Routes, Route} from "react-router-dom"
+
+// Component
 import Home from '../../pages/Home';
-import React, {useState, useEffect} from "react";
-// router
-import { useParams } from "react-router-dom";
+import Dashboard from '../../pages/Dashboard';
 
-// datas
-import {getUserInfos } from "../../services/callsDatasMocked";
-import { USER_MAIN_DATA } from '../../datas/data';
-
+// Styles
+import './App.css';
 
 function App() {
    
@@ -22,9 +18,7 @@ function App() {
                 <Route path="/" element={<Home/>} />
                 <Route
                     path="/user/:userId" 
-                    element = { <Dashboard  /> } />
-                    
-                 
+                    element = { <Dashboard  /> } />                 
       
             </Routes>
      

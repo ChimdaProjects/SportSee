@@ -1,7 +1,8 @@
-import "./activityGraph.scss";
-import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
-import { getUserActivity } from "../../services/callsDatasMocked";
+import React from "react";
+
+import PropTypes from 'prop-types';
+
+// Recharts components
 import {
     BarChart,
     Bar,
@@ -14,6 +15,16 @@ import {
     Label
   } from "recharts";
 
+// Style
+import "./activityGraph.scss";
+
+
+
+/**
+ * 
+ * @param {object} props
+ * @returns {JSX}
+ */
 const ActivityGraph = ({data}) => {
   // array of sessions
    const datas = data;
@@ -29,7 +40,6 @@ const ActivityGraph = ({data}) => {
                 width={800}
                 height={300}
                 data={data}
-             
                 barGap={8} barCategoryGap={1}
             >
             <CartesianGrid strokeDasharray="3 3" />
@@ -50,7 +60,9 @@ const ActivityGraph = ({data}) => {
     )
 }
 
-
+ActivityGraph.propTypes = {
+    data : PropTypes.array.isRequired
+}
 const CustomToolTip = ({active, payload}) => {
     if (active && payload) {
         return (
@@ -63,5 +75,9 @@ const CustomToolTip = ({active, payload}) => {
         )
     }
   
+}
+CustomToolTip.propTypes = {
+    active: PropTypes.bool,
+    payload: PropTypes.array
 }
 export default ActivityGraph;

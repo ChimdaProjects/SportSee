@@ -1,10 +1,10 @@
 import "./radarChartActivity.scss";
-
+import PropTypes from 'prop-types';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 
 
 const RadarChartActivity = ({dataPerf}) => {
- 
+    // new array datas, modification kind by a name
     const newDatas = dataPerf.map((elt)=> {
         switch(elt.kind) {
             case 1: 
@@ -68,4 +68,7 @@ const RadarChartActivity = ({dataPerf}) => {
     )
 }
 
+RadarChartActivity.propTypes = {
+    data : PropTypes.array.isRequired
+}
 export default RadarChartActivity;

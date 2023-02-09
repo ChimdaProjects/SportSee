@@ -1,12 +1,12 @@
 import "./lineChartSession.scss";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import dataSession from "../../datas/data"
+import PropTypes from 'prop-types';
 import CustomToolTipSession from "./CustomToolTipSession";
 
 const LineChartSession = ({data}) => {
-    //console.log(data)
+    // modification array, change day by first letter of a day of a week
     const newDatas = data.map((elt) => {
-        //console.log("elt",elt)
+
         switch(elt.day) {
             case 1: 
             return { 
@@ -47,7 +47,7 @@ const LineChartSession = ({data}) => {
             default : return {...data}
         }
     })
-    //console.log("data", newDatas)
+   
     return (
         <div className="graph-session">
             <ResponsiveContainer width={"100%"} height={258}>
@@ -85,6 +85,10 @@ const LineChartSession = ({data}) => {
     )
 }
 
+
+LineChartSession.propTypes = {
+    data : PropTypes.array.isRequired
+}
 
 
 export default LineChartSession;

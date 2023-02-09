@@ -62,6 +62,8 @@ const Dashboard = () => {
     
     //console.log("username",userInfos.firstName)
     //console.log("perf", perf)
+    console.log("score", score)
+    console.log("average", averageSession)
     if (!dataUser) return null;
     
     return (      
@@ -73,7 +75,6 @@ const Dashboard = () => {
                 <div className="dashboard-main-user">
                     
                    <User name ={dataUser.firstName}/>
-                   {/* dataUser.userInfos.firstName */}
                 
                     <div className="dashboard-main-content">
                         <div className="dashboard-main-content-graph">

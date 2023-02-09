@@ -1,4 +1,5 @@
 import "./lineChartSession.scss";
+import PropTypes from 'prop-types';
 
 const CustomToolTipSession = ( { active, payload } ) => 
     {
@@ -13,5 +14,10 @@ const CustomToolTipSession = ( { active, payload } ) =>
         }
         return null;
     }
+
+CustomToolTipSession.propTypes = {
+    active: PropTypes.bool,
+    payload: PropTypes.array
+}
 
 export default CustomToolTipSession;

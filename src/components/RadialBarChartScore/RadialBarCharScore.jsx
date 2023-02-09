@@ -1,5 +1,6 @@
 import "./radialBarScore.scss"
 import { ResponsiveContainer, PieChart, Pie, Legend, Cell} from 'recharts';
+import PropTypes from 'prop-types';
 
 const RadialBarChartScore = ({score}) => {
     const data = [
@@ -40,4 +41,7 @@ const RadialBarChartScore = ({score}) => {
     )
 }
 
+RadialBarChartScore.propTypes = {
+    score : PropTypes.number
+}
 export default RadialBarChartScore;
