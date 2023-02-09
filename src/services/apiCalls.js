@@ -5,8 +5,7 @@ import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE 
 const baseURL = process.env.REACT_APP_BASE_URL;
 console.log("url", baseURL)
 
-const envDatasMocked = "true";
-//process.env.REACT_APP_DATAS_MOCKED;
+const envDatasMocked = process.env.REACT_APP_DATAS_MOCKED;
 console.log("env", envDatasMocked)
 /**
  * @description Retrieve the main user info (first name, last name, today score)
@@ -15,7 +14,6 @@ console.log("env", envDatasMocked)
  */
 export async function getUserInfos(id) {
     if (envDatasMocked === 'true') {
-
         try {
             const response =  
                         USER_MAIN_DATA
@@ -31,7 +29,7 @@ export async function getUserInfos(id) {
         }
     } else {
         try {
-            const response = await axios.get(`http://localhost:3000/user/${id}`);
+            const response = await axios.get(`${baseURL}user/${id}`);
             //console.log(response);
             return response.data;
           } catch (error) {
@@ -64,7 +62,7 @@ export async function getUserActivity(id) {
         }
     } else {
         try {
-        const response = await axios.get(`http://localhost:3000/user/${id}/activity`);
+        const response = await axios.get(`${baseURL}user/${id}/activity`);
         //console.log(response);
         return response.data;
         } catch (error) {
@@ -96,7 +94,7 @@ export async function getUserAverageSessions(id) {
         }
     } else {
         try {
-            const response = await axios.get(`http://localhost:3000/user/${id}/average-sessions`);
+            const response = await axios.get(`${baseURL}user/${id}/average-sessions`);
             //console.log(response);
             return response.data;
         } catch (error) {
@@ -128,7 +126,7 @@ export async function getUserPerf(id) {
         }
     } else {
     try {
-        const response = await axios.get(`http://localhost:3000/user/${id}/performance`);
+        const response = await axios.get(`${baseURL}user/${id}/performance`);
         //console.log(response);
         return response.data;
       } catch (error) {

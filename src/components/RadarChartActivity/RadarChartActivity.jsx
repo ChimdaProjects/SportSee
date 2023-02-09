@@ -8,7 +8,7 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } fro
  * @returns {JSX} Render the radar graph of user's activity
  */
 const RadarChartActivity = ({dataPerf}) => {
-    console.log(typeof(dataPerf))
+   
     // new array datas, modification kind by a name
     const newDatas = dataPerf.map((elt)=> {
         switch(elt.kind) {
