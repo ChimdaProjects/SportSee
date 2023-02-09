@@ -62,8 +62,8 @@ const Dashboard = () => {
     
     //console.log("username",userInfos.firstName)
     //console.log("perf", perf)
-    console.log("score", score)
-    console.log("average", averageSession)
+    //console.log("score", score)
+    //console.log("average", averageSession)
     if (!dataUser) return null;
     
     return (      

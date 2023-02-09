@@ -4,6 +4,7 @@ import {Routes, Route} from "react-router-dom"
 // Component
 import Home from '../../pages/Home';
 import Dashboard from '../../pages/Dashboard';
+import Error from "../Error/Error";
 
 // Styles
 import './App.css';
@@ -18,7 +19,10 @@ function App() {
                 <Route path="/" element={<Home/>} />
                 <Route
                     path="/user/:userId" 
-                    element = { <Dashboard  /> } />                 
+                    element = { <Dashboard  /> } />      
+                <Route path="*" element={<Error />}/> 
+                
+
       
             </Routes>
      

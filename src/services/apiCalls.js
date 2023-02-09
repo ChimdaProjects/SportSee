@@ -1,18 +1,44 @@
 import axios from "axios";
+import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from "../datas/data";
 
+
+const baseURL = process.env.REACT_APP_BASE_URL;
+console.log("url", baseURL)
+
+const envDatasMocked = "true";
+//process.env.REACT_APP_DATAS_MOCKED;
+console.log("env", envDatasMocked)
 /**
  * @description Retrieve the main user info (first name, last name, today score)
  * @param {number} id id of user
  * @returns {object} response data
  */
 export async function getUserInfos(id) {
-    try {
-      const response = await axios.get(`http://localhost:3000/user/${id}`);
-      console.log(response);
-      return response.data;
-    } catch (error) {
-      console.error(error);
+    if (envDatasMocked === 'true') {
+
+        try {
+            const response =  
+                        USER_MAIN_DATA
+                            .filter(user => user.id == id)
+                            .shift();
+    
+            console.log("response user info", response);
+            return {data:response};
+            
+        }
+        catch(err) {
+            console.log(err);
+        }
+    } else {
+        try {
+            const response = await axios.get(`http://localhost:3000/user/${id}`);
+            //console.log(response);
+            return response.data;
+          } catch (error) {
+            console.error(error);
+          }
     }
+   
 }
 
 /**
@@ -21,12 +47,29 @@ export async function getUserInfos(id) {
  * @returns 
  */
 export async function getUserActivity(id) {
-    try {
-      const response = await axios.get(`http://localhost:3000/user/${id}/activity`);
-      console.log(response);
-      return response.data;
-    } catch (error) {
-      console.error(error);
+    if (envDatasMocked === 'true') {
+
+        try {
+            const response =  
+                        USER_ACTIVITY
+                            .filter(user => user.userId == id)
+                            .shift();
+    
+            console.log("response user info", response);
+            return {data:response};
+            
+        }
+        catch(err) {
+            console.log(err);
+        }
+    } else {
+        try {
+        const response = await axios.get(`http://localhost:3000/user/${id}/activity`);
+        //console.log(response);
+        return response.data;
+        } catch (error) {
+        console.error(error);
+        }
     }
 }
 
@@ -36,13 +79,30 @@ export async function getUserActivity(id) {
  * @returns 
  */
 export async function getUserAverageSessions(id) {
-    try {
-        const response = await axios.get(`http://localhost:3000/user/${id}/average-sessions`);
-        console.log(response);
-        return response.data;
-      } catch (error) {
-        console.error(error);
-      }
+    if (envDatasMocked === 'true') {
+
+        try {
+            const response =  
+                        USER_AVERAGE_SESSIONS
+                            .filter(user => user.userId == id)
+                            .shift();
+    
+            console.log("response user info", response);
+            return {data:response};
+            
+        }
+        catch(err) {
+            console.log(err);
+        }
+    } else {
+        try {
+            const response = await axios.get(`http://localhost:3000/user/${id}/average-sessions`);
+            //console.log(response);
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
 
 /**
@@ -51,11 +111,28 @@ export async function getUserAverageSessions(id) {
  * @returns 
  */
 export async function getUserPerf(id) {
+    if (envDatasMocked === 'true') {
+
+        try {
+            const response =  
+                        USER_PERFORMANCE
+                            .filter(user => user.userId == id)
+                            .shift();
+    
+            console.log("response user info", response);
+            return {data:response};
+            
+        }
+        catch(err) {
+            console.log(err);
+        }
+    } else {
     try {
         const response = await axios.get(`http://localhost:3000/user/${id}/performance`);
-        console.log(response);
+        //console.log(response);
         return response.data;
       } catch (error) {
         console.error(error);
       }
+    }
 }
