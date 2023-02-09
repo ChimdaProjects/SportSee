@@ -2,8 +2,13 @@ import "./radarChartActivity.scss";
 import PropTypes from 'prop-types';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 
-
+/**
+ * This function displays a radar.
+ * @param {object} datas of the user's performances
+ * @returns {JSX} Render the radar graph of user's activity
+ */
 const RadarChartActivity = ({dataPerf}) => {
+    console.log(typeof(dataPerf))
     // new array datas, modification kind by a name
     const newDatas = dataPerf.map((elt)=> {
         switch(elt.kind) {
@@ -40,7 +45,7 @@ const RadarChartActivity = ({dataPerf}) => {
             default: return {...dataPerf}
         }
    })
-   //console.log("newdatas", newDatas);
+  
     return (
         <div className="graph-radar-activity">
             <ResponsiveContainer width={"100%"} height={250}>

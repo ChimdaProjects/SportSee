@@ -1,3 +1,7 @@
+/**
+ * This function displays the page 404
+ * @returns {JSX} Render the page 404
+ */
 const Error = () => {
     return (
         <div>

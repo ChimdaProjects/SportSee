@@ -81,38 +81,4 @@ export const getUserPerf = async (id) => {
     }
 }
 
-//console.log("data", data);
 
-// Variables
-//let datas = [];
-
-/*export const getDatas = async   (cat, id) => {
-
-    let result;
-    
-    switch(cat) {
-        case "main_data" :
-            result = await  getUserInfos(id);
-            console.log("result", result);
-           
-          
-            break;
-
-        case "activity" :
-            result = data.USER_ACTIVITY.find((user) => user.id == id);
-            break;
-
-        case "average_sessions" :
-            result = data.USER_AVERAGE_SESSIONS.find((user) =>  user.id == id);
-            break;
-
-        case "performance" :
-            result = data.USER_PERFORMANCE.find((user) => user.id == id);
-            break;
-
-        default: 
-            console.log(`${cat} not found`);
-    }
-    //console.log("fetch data", datas)
-    return result;
-}*/

@@ -3,6 +3,10 @@ import "./navBar.scss";
 import logo from "../../asset/logo_home.svg";
 import { Link } from "react-router-dom";
 
+/**
+ * This function displays the navigation.
+ * @returns {JSX} Render the top navigation of the Dashboard
+ */
 const NavBar = () => {
     return (
         <div className="navBar">

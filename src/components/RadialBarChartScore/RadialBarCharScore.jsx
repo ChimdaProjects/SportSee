@@ -2,6 +2,11 @@ import "./radialBarScore.scss"
 import { ResponsiveContainer, PieChart, Pie, Legend, Cell} from 'recharts';
 import PropTypes from 'prop-types';
 
+/**
+ * This function displays the score
+ * @param {number} score - score of the user's objectif
+ * @returns {JSX} Render the graph of the user's score
+ */
 const RadialBarChartScore = ({score}) => {
     const data = [
         { value: score },

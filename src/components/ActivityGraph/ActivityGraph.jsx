@@ -21,9 +21,9 @@ import "./activityGraph.scss";
 
 
 /**
- * 
- * @param {object} props
- * @returns {JSX}
+ * This function displays the graph of daily sessions
+ * @param {object} datas of daily activity 
+ * @returns {JSX} Render the graph of the daily activity
  */
 const ActivityGraph = ({data}) => {
   // array of sessions

@@ -6,7 +6,10 @@ import iconSwimming from "../../asset/icon_swimming.svg"
 import iconCycling from "../../asset/icon_cycling.svg"
 import iconFitness from "../../asset/icon_fitness.svg"
 
-
+/**
+ * This function displays the navigation to the left.
+ * @returns {JSX} Render the navigation to the left of Dashboard.
+ */
 const NavBarLeft = () => {
     return (
         <div className="navBarLeft">

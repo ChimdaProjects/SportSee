@@ -3,6 +3,11 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'rec
 import PropTypes from 'prop-types';
 import CustomToolTipSession from "./CustomToolTipSession";
 
+/**
+ * This function displays the graph of average sessions.
+ * @param {array} Array of the average sessions of a user per day.
+ * @returns {JSX} Render the graph for the average session
+ */
 const LineChartSession = ({data}) => {
     // modification array, change day by first letter of a day of a week
     const newDatas = data.map((elt) => {
