@@ -36,25 +36,26 @@ const Dashboard = () => {
     const [perf, setPerf] = useState([]);
     // Params to the url
     const { userId } = useParams();
-
+    const id = parseInt(userId)
+    //const userId= 12;
     useEffect(() => {
         const fetchDatas = async () => {
-            const datas = await getUserInfos(parseInt(userId));
+            const datas = await getUserInfos((id));
             setDataUser(datas.data.userInfos);
             setDataKey(datas.data.keyData);
             setScore(datas.data.todayScore || datas.data.score);
             
-            const dataActivity = await getUserActivity(parseInt(userId));
+            const dataActivity = await getUserActivity((id));
             setSession(dataActivity.data.sessions);
             
-           const dataAverageSession = await getUserAverageSessions(parseInt(userId));
+           const dataAverageSession = await getUserAverageSessions((id));
            setAverageSession(dataAverageSession.data.sessions);
             
-           const dataPerformance = await getUserPerf(parseInt(userId));
+           const dataPerformance = await getUserPerf((id));
            setPerf(dataPerformance.data.data);
         }
         fetchDatas();
-    } , [userId]);
+    } , [id]);
  
     if (!dataUser) return null;
     

@@ -33,16 +33,16 @@ const Home = () => {
             <NavBar />
             <div className="dashboard-main">
                 <NavBarLeft />
-                <div className="dashboard-main-user">
+                    <div className="dashboard-main-user">
+                        
+                        <p className="homepage">Bonjour, veuillez sélectionner un utilisateur pour consulter son profil : </p>
+                        <p className="homepage-user"> <Link to="/user/12">User 12 &#x1F6B9; </Link></p>
+                        <p className="homepage-user"><Link to="/user/18">User 18 &#x1F6BA;</Link></p>
                     
-                    <User />
-                    <Link to="/user/12">User 12 &#x1F6B9; </Link>
-                    <Link to="/user/18">User 18 &#x1F6BA;</Link>
-                  
+                        </div>
+                        
+                        
                     </div>
-                    
-                    
-                </div>
                 
             </div>
             

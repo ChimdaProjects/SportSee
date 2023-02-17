@@ -20,7 +20,8 @@
                 display: flex;
                 flex-direction: column;
                 &-details {
-                    margin: 1rem 0;
+                    margin: 2rem 0;
+                    margin-right: 3rem;
                     display: flex;
                     justify-content: space-between;    
                 }
@@ -36,5 +37,29 @@
             }
         }
         
+    }
+}
+.homepage {
+    font-size: 2rem;
+    margin: 3rem;
+    
+    &-user {
+        font-size: 2rem;
+        list-style: none;
+        margin: 2rem auto;
+        text-decoration: none;
+        border: 1px solid red;
+        width: 30%;
+        border-radius: 1rem;
+        padding: 1rem;  
+    }
+}
+
+@media (min-width:1024px) {
+    .dashboard-main-content {
+        margin: 0;
+    }
+    .dashboard-main-content-graph-details {
+        margin-right: 1rem
     }
 }

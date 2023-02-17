@@ -48,7 +48,7 @@ const RadarChartActivity = ({dataPerf}) => {
   
     return (
         <div className="graph-radar-activity">
-            <ResponsiveContainer width={"100%"} height={250}>
+            <ResponsiveContainer width={"100%"} height={"100%"}>
                 <RadarChart 
                     cx="50%" 
                     cy="50%" 
@@ -56,9 +56,10 @@ const RadarChartActivity = ({dataPerf}) => {
                     data={newDatas}
    
                 >   
-                    <PolarGrid />
+                    <PolarGrid radialLines={false} />
                     <PolarAngleAxis 
                         dataKey="kind" 
+                        stroke="white"
                         tick={{fontSize: 12, color: "#FFFFFF"}} 
 
                     />
@@ -66,9 +67,10 @@ const RadarChartActivity = ({dataPerf}) => {
                         dataKey="value"  
                         fill="#FF0101B2" 
                         fillOpacity={0.7} 
+                        stroke="transparent"
                     />
                 </RadarChart>
-      </ResponsiveContainer>
+            </ResponsiveContainer>
         </div>
     )
 }

@@ -1,9 +1,18 @@
 .graph-session {
     background-color:red;
     height: 263px;
-    width: 258px;
+    max-width: 258px;
     border-radius: 5px;
-
+  
+    &-title {
+        font-size: 15px ;
+        color:#FFFFFF ;
+        opacity: 0.5;
+        position: absolute;
+        width: 10%;
+        text-align: left;
+        margin-left: 1rem;
+    }
 }
 
 /* style of TOOLTIP */

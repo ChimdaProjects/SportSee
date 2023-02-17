@@ -23,6 +23,7 @@ const RadialBarChartScore = ({ score }) => {
                         innerRadius={ 70 }
                         outerRadius={ 85 }
                         startAngle={ 90 }
+                       
                     >
                     {
                     data.map((entry, index) => index === 0 ? 
@@ -30,7 +31,7 @@ const RadialBarChartScore = ({ score }) => {
                     <Cell key={`cell-${index}`} cornerRadius={ 10 } fill="#ff0000" />
                     ) : 
                     (
-                    <Cell key={`cell-${entry}`} fill="#FBFBFB" />
+                    <Cell key={`cell-${entry}`} fill="#FFFFFF" />
                     )
                     )}
         

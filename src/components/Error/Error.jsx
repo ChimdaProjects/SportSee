@@ -5,6 +5,7 @@
 const Error = () => {
     return (
         <div>
+            
             <p>
                 Oups... La page demandée n'existe pas!
             </p>

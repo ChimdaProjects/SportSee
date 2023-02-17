@@ -4,10 +4,11 @@ import {Routes, Route} from "react-router-dom"
 // Component
 import Home from '../../pages/Home';
 import Dashboard from '../../pages/Dashboard';
-import Error from "../Error/Error";
+import NotFound from "../../pages/NotFound";
 
 // Styles
 import './App.css';
+
 
 function App() {
    
@@ -20,7 +21,7 @@ function App() {
                 <Route
                     path="/user/:userId" 
                     element = { <Dashboard  /> } />      
-                <Route path="*" element={<Error />}/> 
+                <Route path="*" element={<NotFound />}/> 
                 
 
       

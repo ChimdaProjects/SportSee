@@ -1,5 +1,5 @@
 import "./lineChartSession.scss";
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, Label } from 'recharts';
 import PropTypes from 'prop-types';
 import CustomToolTipSession from "./CustomToolTipSession";
 
@@ -55,12 +55,13 @@ const LineChartSession = ({data}) => {
    
     return (
         <div className="graph-session">
+            <h2 className="graph-session-title">Durée moyenne des sessions</h2>
             <ResponsiveContainer width={"100%"} height={258}>
                 <LineChart
-                      width={500}
-                      height={300}
                       data={newDatas}
                       strokeWidth={1}
+                      outerRadius="75%"
+                      margin={{ top: 10, right: 12, bottom: 24, left: 0 }}
                 >
                         <XAxis 
                             dataKey="day" 
@@ -76,6 +77,10 @@ const LineChartSession = ({data}) => {
                         />
                         <Tooltip 
                             content={<CustomToolTipSession/>}
+                            cursor={{
+                                stroke: "rgba(0, 0, 0, 0.1)",
+                                strokeWidth: 32,
+                              }}
                         />
                         <Line 
                             type="monotone" 
