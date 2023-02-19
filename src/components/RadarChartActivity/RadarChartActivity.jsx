@@ -65,7 +65,7 @@ const RadarChartActivity = ({dataPerf}) => {
                 <RadarChart 
                     cx="50%" 
                     cy="50%" 
-                    outerRadius="80%" 
+                    outerRadius="75%" 
                     data={orderedDatasArray}
    
                 >   

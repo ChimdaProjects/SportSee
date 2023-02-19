@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 // router
-import { useParams, redirect } from "react-router-dom";
+import { useParams, redirect, Link } from "react-router-dom";
 
 // datas
 //import {   getUserPerf } from "../services/callsDatasMocked";
@@ -26,7 +26,10 @@ import lip_icon from "../asset/fat-icon.svg"
 // style
 import "./dashboard.scss";
 
-
+/**
+ * This function displays the dashboard page
+ * @returns {JSX} Render the dashboard page
+ */
 const Dashboard = () => {
     // State
     const [ dataUser, setDataUser ] = useState([]);
@@ -35,6 +38,7 @@ const Dashboard = () => {
     const [session, setSession] = useState([]);
     const [averageSession, setAverageSession] = useState([]);
     const [perf, setPerf] = useState([]);
+    const [error, setError] = useState();
     // Params to the url
     const { userId } = useParams();
     const id = parseInt(userId)
@@ -42,9 +46,14 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchDatas = async () => {
             const datas = await getUserInfos((id));
-            setDataUser(datas.data.userInfos);
-            setDataKey(datas.data.keyData);
-            setScore(datas.data.todayScore || datas.data.score);
+            if(datas) {
+                setDataUser(datas.data.userInfos);
+                setDataKey(datas.data.keyData);
+                setScore(datas.data.todayScore || datas.data.score);
+            } else {
+                setError(true)
+            }
+           
             
             const dataActivity = await getUserActivity((id));
             setSession(dataActivity.data.sessions);
@@ -57,13 +66,34 @@ const Dashboard = () => {
         }
         fetchDatas();
     } , [id]);
-    console.log("dataUser", dataUser)
-    if (!dataUser || ! dataKey || !score ||!session || !averageSession || !perf ) {
-        return redirect("/")
-    };
-    
-    return (      
-        <div className="dashboard">
+  
+    if (error === true) {
+        return (
+            <div className="dashboard">
+                <NavBar />
+                <div className="dashboard-main">
+                    <NavBarLeft />
+                    <div className="dashboard-error">L'utilisateur demandé est introuvable...
+                        <div className="dashboard-error-link">
+                            <Link 
+                                to="/"
+                                style={{
+                                    textDecoration:"none",
+                                    color:"black"
+                                }}
+                                
+                            >
+                                Retour à l'Accueil 
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        )
+    }
+        return ( 
+      
+            <div className="dashboard">
             <NavBar />
             <div className="dashboard-main">
                 <NavBarLeft />
@@ -81,7 +111,7 @@ const Dashboard = () => {
                                 <RadialBarChartScore score = { score } />
                             </div>   
                         </div>
-
+    
                         <div className="dashboard-main-content-cards">
                             <Card 
                                 icon = { cal_icon } 
@@ -111,8 +141,8 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-        </div>
-     )    
+        </div> 
+    )    
 }
 
 export default Dashboard;
