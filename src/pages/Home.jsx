@@ -25,7 +25,10 @@ import "./dashboard.scss"
 
 
 
-
+/**
+ * This function displays the homepage
+ * @returns {JSX} returns the render of homepage
+ */
 const Home = () => {
 
     return (
@@ -36,8 +39,16 @@ const Home = () => {
                     <div className="dashboard-main-user">
                         
                         <p className="homepage">Bonjour, veuillez sélectionner un utilisateur pour consulter son profil : </p>
-                        <p className="homepage-user"> <Link to="/user/12">User 12 &#x1F6B9; </Link></p>
-                        <p className="homepage-user"><Link to="/user/18">User 18 &#x1F6BA;</Link></p>
+                        <p className="homepage-user"> 
+                            <Link to="/user/12" style={{textDecoration:'none', color:"black"}} activeStyle={{color:"red"}}>
+                                User 12 &#x1F6B9; 
+                            </Link>
+                        </p>
+                        <p className="homepage-user">
+                            <Link to="/user/18" className="homepage-user-link" style={{textDecoration:'none', color:"black"}} activeStyle={{color:"red"}}>
+                                User 18 &#x1F6BA;
+                            </Link>
+                        </p>
                     
                         </div>
                         

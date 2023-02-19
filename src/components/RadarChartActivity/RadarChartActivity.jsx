@@ -14,38 +14,51 @@ const RadarChartActivity = ({dataPerf}) => {
         switch(elt.kind) {
             case 1: 
             return {
-                kind: "cardio",
+                kind: "Cardio",
                 value: elt.value
             }
             case 2: 
             return {
-                kind: "energy",
+                kind: "Energie",
                 value: elt.value
             }
             case 3: 
             return {
-                kind: "endurance",
+                kind: "Endurance",
                 value: elt.value
             }
             case 4: 
             return {
-                kind: "strength",
+                kind: "Force",
                 value: elt.value
             }
             case 5: 
             return {
-                kind: "speed",
+                kind: "Vitesse",
                 value: elt.value
             }
             case 6: 
             return {
-                kind: "intensity",
+                kind: "Intensité",
                 value: elt.value
             }
             default: return {...dataPerf}
         }
    })
-  
+   // new array from newDatas to change the order of kind
+   const orderedKind = ["Intensité", "Vitesse", "Force", "Endurance", "Energie", "Cardio"];
+   const orderedDatasArray = [];
+   for (let kind of orderedKind) {
+        for (let elt of newDatas) {
+            if (elt.kind === kind) {
+                orderedDatasArray.push({
+                    kind : kind,
+                    value : elt.value
+                })
+            }
+        }
+   }
+
     return (
         <div className="graph-radar-activity">
             <ResponsiveContainer width={"100%"} height={"100%"}>
@@ -53,7 +66,7 @@ const RadarChartActivity = ({dataPerf}) => {
                     cx="50%" 
                     cy="50%" 
                     outerRadius="80%" 
-                    data={newDatas}
+                    data={orderedDatasArray}
    
                 >   
                     <PolarGrid radialLines={false} />

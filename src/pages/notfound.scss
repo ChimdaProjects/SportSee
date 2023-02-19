@@ -1,0 +1,14 @@
+.error {
+    margin: 5rem auto;
+    text-align: center;
+    font-size: 24px;
+    color: black
+}
+.error-link a {
+    text-decoration: none;
+    color:black;
+    &:hover {
+        color:red
+    }
+  
+}
