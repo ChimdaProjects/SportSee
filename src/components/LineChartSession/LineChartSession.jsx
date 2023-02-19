@@ -5,7 +5,7 @@ import CustomToolTipSession from "./CustomToolTipSession";
 
 /**
  * This function displays the graph of average sessions.
- * @param {array} Array of the average sessions of a user per day.
+ * @param {array} data - Array of the average sessions of a user per day.
  * @returns {JSX} Render the graph for the average session
  */
 const LineChartSession = ({data}) => {

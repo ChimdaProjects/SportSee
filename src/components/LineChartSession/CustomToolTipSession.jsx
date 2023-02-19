@@ -1,6 +1,12 @@
 import "./lineChartSession.scss";
 import PropTypes from 'prop-types';
 
+/**
+ * This function displays the tooltip from the line chart session graph
+ * @param {Boolean} active - If set true, the tooltip is displayed. If set false, the tooltip is hidden
+ * @param {Array} payload - The source data of the content to be displayed in the tooltip
+ * @returns HTML
+ */
 const CustomToolTipSession = ( { active, payload } ) => 
     {
 
@@ -16,8 +22,8 @@ const CustomToolTipSession = ( { active, payload } ) =>
     }
 
 CustomToolTipSession.propTypes = {
-    active: PropTypes.bool,
-    payload: PropTypes.array
+    active: PropTypes.bool.isRequired,
+    payload: PropTypes.array.isRequired
 }
 
 export default CustomToolTipSession;

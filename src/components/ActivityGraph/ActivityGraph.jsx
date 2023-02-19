@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import {
     BarChart,
     Bar,
-    ReferenceLine,
     XAxis,
     YAxis,
     CartesianGrid,
@@ -23,7 +22,7 @@ import "./activityGraph.scss";
 
 /**
  * This function displays the graph of daily sessions
- * @param {object} datas of daily activity 
+ * @param {object} data - datas of daily activity 
  * @returns {JSX} Render the graph of the daily activity
  */
 const ActivityGraph = ({data}) => {
@@ -111,6 +110,12 @@ ActivityGraph.propTypes = {
     data : PropTypes.array.isRequired
 }
 
+/**
+ * This function displays the tooltip from the daily activity graph
+ * @param {Boolean} active - If set true, the tooltip is displayed. If set false, the tooltip is hidden
+ * @param {Array} payload - The source data of the content to be displayed in the tooltip
+ * @returns 
+ */
 const CustomToolTip = ({active, payload}) => {
     if (active && payload) {
         return (

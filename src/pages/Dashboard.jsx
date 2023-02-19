@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 // router
-import { useParams } from "react-router-dom";
+import { useParams, redirect } from "react-router-dom";
 
 // datas
 //import {   getUserPerf } from "../services/callsDatasMocked";
@@ -15,6 +15,7 @@ import NavBarLeft from "../components/NavBarLeft/NavBarLeft";
 import RadarChartActivity from "../components/RadarChartActivity/RadarChartActivity";
 import RadialBarChartScore from "../components/RadialBarChartScore/RadialBarCharScore";
 import User from "../components/User/User";
+import NotFound from "./NotFound";
 
 // img
 import prot_icon from "../asset/protein-icon.svg"
@@ -37,7 +38,7 @@ const Dashboard = () => {
     // Params to the url
     const { userId } = useParams();
     const id = parseInt(userId)
-    //const userId= 12;
+  
     useEffect(() => {
         const fetchDatas = async () => {
             const datas = await getUserInfos((id));
@@ -56,8 +57,10 @@ const Dashboard = () => {
         }
         fetchDatas();
     } , [id]);
- 
-    if (!dataUser) return null;
+    console.log("dataUser", dataUser)
+    if (!dataUser || ! dataKey || !score ||!session || !averageSession || !perf ) {
+        return redirect("/")
+    };
     
     return (      
         <div className="dashboard">

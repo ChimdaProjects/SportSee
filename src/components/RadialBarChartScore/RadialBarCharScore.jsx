@@ -48,6 +48,6 @@ const RadialBarChartScore = ({ score }) => {
 }
 
 RadialBarChartScore.propTypes = {
-    score : PropTypes.number
+    
 }
 export default RadialBarChartScore;

@@ -9,7 +9,10 @@ import NotFound from "../../pages/NotFound";
 // Styles
 import './App.css';
 
-
+/**
+ * Component App contains the router
+ * @returns 
+ */
 function App() {
    
     return (
@@ -22,6 +25,7 @@ function App() {
                     path="/user/:userId" 
                     element = { <Dashboard  /> } />      
                 <Route path="*" element={<NotFound />}/> 
+                <Route path="/notfound" element={<NotFound/>} />
                 
 
       

@@ -1,5 +1,11 @@
 import "./user.scss"
+import PropTypes from 'prop-types';
 
+/**
+ * This function displays the header of the dashboard
+ * @param {String} name - firstname of the user 
+ * @returns {JSX} render the header of the dashboard
+ */
 const User = ({name}) => {
 
     return (
@@ -10,4 +16,7 @@ const User = ({name}) => {
     )
 }
 
+User.propTypes = {
+   name: PropTypes.string.isRequired 
+}
 export default User;

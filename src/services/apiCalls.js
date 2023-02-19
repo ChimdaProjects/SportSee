@@ -1,12 +1,11 @@
 import axios from "axios";
 import { USER_MAIN_DATA, USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from "../datas/data";
 
-
+// Url choosen by default from .env file
 const baseURL = process.env.REACT_APP_BASE_URL;
-console.log("url", baseURL)
-
+// environment variable to select api data or mocked data
 const envDatasMocked = process.env.REACT_APP_DATAS_MOCKED;
-console.log("env", envDatasMocked)
+
 /**
  * @description Retrieve the main user info (first name, last name, today score)
  * @param {number} id id of user
@@ -20,7 +19,6 @@ export async function getUserInfos(id) {
                             .filter(user => user.id == id)
                             .shift();
     
-            console.log("response user info", response);
             return {data:response};
             
         }
@@ -30,11 +28,12 @@ export async function getUserInfos(id) {
     } else {
         try {
             const response = await axios.get(`${baseURL}user/${id}`);
-            //console.log(response);
             return response.data;
-          } catch (error) {
+
+        } catch (error) {
             console.error(error);
-          }
+           
+        }
     }
    
 }
@@ -53,18 +52,18 @@ export async function getUserActivity(id) {
                             .filter(user => user.userId == id)
                             .shift();
     
-            console.log("response user info", response);
             return {data:response};
             
         }
         catch(err) {
             console.log(err);
         }
+
     } else {
         try {
-        const response = await axios.get(`${baseURL}user/${id}/activity`);
-        //console.log(response);
-        return response.data;
+            const response = await axios.get(`${baseURL}user/${id}/activity`);
+            return response.data;
+
         } catch (error) {
         console.error(error);
         }
@@ -84,19 +83,18 @@ export async function getUserAverageSessions(id) {
                         USER_AVERAGE_SESSIONS
                             .filter(user => user.userId == id)
                             .shift();
-    
-            console.log("response user info", response);
             return {data:response};
             
         }
         catch(err) {
             console.log(err);
         }
+
     } else {
         try {
             const response = await axios.get(`${baseURL}user/${id}/average-sessions`);
-            //console.log(response);
             return response.data;
+
         } catch (error) {
             console.error(error);
         }
@@ -116,8 +114,6 @@ export async function getUserPerf(id) {
                         USER_PERFORMANCE
                             .filter(user => user.userId == id)
                             .shift();
-    
-            console.log("response user info", response);
             return {data:response};
             
         }
@@ -127,8 +123,8 @@ export async function getUserPerf(id) {
     } else {
     try {
         const response = await axios.get(`${baseURL}user/${id}/performance`);
-        //console.log(response);
         return response.data;
+
       } catch (error) {
         console.error(error);
       }
